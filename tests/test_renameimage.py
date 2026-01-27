@@ -5,7 +5,7 @@ import time
 from datetime import datetime
 import unittest
 from unittest.mock import patch, MagicMock
-from src.renameimage.__main__ import rename_files, get_exif_date, format_date_for_filename
+from renameimage.__main__ import rename_files, get_exif_date, format_date_for_filename
 
 class TestRenameImage(unittest.TestCase):
     def setUp(self):
@@ -50,7 +50,7 @@ class TestRenameImage(unittest.TestCase):
         self.assertTrue(os.path.exists(os.path.join(self.test_dir, filename)))
         self.assertFalse(os.path.exists(os.path.join(self.test_dir, "2023-01-01-12-00-00.jpg")))
 
-    @patch('src.renameimage.__main__.get_exif_date')
+    @patch('renameimage.__main__.get_exif_date')
     def test_rename_with_exif(self, mock_get_exif):
         # Mock EXIF data
         mock_get_exif.return_value = "2022:12:25 10:30:00"
